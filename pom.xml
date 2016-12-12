@@ -192,6 +192,7 @@
   </build>
 
   <modules>
+    <module>datasources</module>
   </modules>
 
 </project>

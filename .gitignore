@@ -1,3 +1,6 @@
 node_modules
 _*
 *.swp
+.idea
+*.iml
+target
