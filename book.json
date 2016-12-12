@@ -1,0 +1,6 @@
+
+{
+  "plugins": [
+    "snippet@git+https://github.com/wildfly-swarm/gitbook-plugin-snippet.git"
+  ]
+}
