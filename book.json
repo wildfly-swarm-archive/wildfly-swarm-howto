@@ -4,4 +4,5 @@
     "snippet@git+https://github.com/wildfly-swarm/gitbook-plugin-snippet.git",
     "sourcelist@git+https://github.com/wildfly-swarm/gitbook-plugin-sourcelist.git"
   ]
+
 }
