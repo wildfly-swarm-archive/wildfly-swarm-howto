@@ -1,0 +1,14 @@
+
+ul.sourcelist {
+  list-style-type: none;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+  font-size: .8em;
+  border-left: 1px dotted #ccc;
+}
+
+section ul.sourcelist ul {
+  list-style-type: none;
+  padding-left: 1.2em;
+  border-left: 1px dotted #ccc;
+}
+
