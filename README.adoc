@@ -1,1 +1,10 @@
 = WildFly Swarm HOWTO
+
+This is a set of documents which each describe how to 
+accomplish many simple tasks you way wish to do with
+WildFly Swarm.
+
+Each HOWTO is in a separate directory, and is directly
+building using `maven`, including executing tests demonstrating
+the functionality.
+

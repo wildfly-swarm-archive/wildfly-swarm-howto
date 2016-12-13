@@ -12,14 +12,12 @@
   <artifactId>root</artifactId>
   <version>2017.1.0-SNAPSHOT</version>
 
-  <name>WildFly Swarm HOWTO: Root</name>
-  <description>WildFly Swarm HOWTO: Root</description>
+  <name>WildFly Swarm HOWTO</name>
+  <description>WildFly Swarm HOWTO</description>
 
   <packaging>pom</packaging>
 
   <properties>
-    <version.wildfly-swarm>${project.version}</version.wildfly-swarm>
-
     <maven.min.version>3.2.1</maven.min.version>
 
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -29,170 +27,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>projectodd-snapshots</id>
-      <name>Project:odd Snapshots from CI</name>
-      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Repository Group</name>
-      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>projectodd-snapshots</id>
-      <name>Project:odd Snapshots from CI</name>
-      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-
-    <!--
-        needed until the latest version of gradle-maven-plugin is released to central:
-        https://github.com/LendingClub/gradle-maven-plugin/issues/25
-    -->
-    <pluginRepository>
-      <id>spring</id>
-      <name>Spring releases</name>
-      <url>http://repo.spring.io/libs-release-remote/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <build>
-    <finalName>${project.artifactId}</finalName>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>wildfly-swarm-plugin</artifactId>
-          <version>${version.wildfly-swarm}</version>
-          <configuration>
-            <jvmArguments>
-              <jvmArgument>-Xmx128m</jvmArgument>
-            </jvmArguments>
-          </configuration>
-          <executions>
-            <execution>
-              <id>package</id>
-              <goals>
-                <goal>package</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.5.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.19.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>2.6</version>
-          <configuration>
-            <failOnMissingWebXml>false</failOnMissingWebXml>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.10</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-test-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>src/it/java</source>
-              </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-resource</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-test-resource</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>src/it/resources</directory>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <configuration>
-          <includes>
-            <include>**/*IT.java</include>
-          </includes>
-          <systemPropertyVariables>
-            <phantomjs.binary.version>2.1.1</phantomjs.binary.version>
-          </systemPropertyVariables>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-
   <modules>
-    <module>datasources</module>
+    <module>create-a-datasource</module>
   </modules>
 
 </project>

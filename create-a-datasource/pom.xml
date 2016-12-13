@@ -18,11 +18,70 @@
   <packaging>war</packaging>
 
   <properties>
-    <version.swarm>2017.1.0-SNAPSHOT</version.swarm>
+    <version.wildfly-swarm>2017.1.0-SNAPSHOT</version.wildfly-swarm>
+    <version.maven-war-plugin>2.2</version.maven-war-plugin>
+    <version.maven-failsafe-plugin>2.19.12.19.1</version.maven-failsafe-plugin>
+    <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
+    <version.arquillian>1.1.10.Final</version.arquillian>
+    <version.arquillian-drone>2.0.0.Alpha4</version.arquillian-drone>
+    <version.arquillian-graphene>2.1.0.Alpha2</version.arquillian-graphene>
+    <version.junit>4.11</version.junit>
+
+    <version.jaxrs-api>1.0.0.Final</version.jaxrs-api>
+
     <version.h2>1.4.187</version.h2>
     <version.postgresql>9.4.1207</version.postgresql>
     <version.mysql>5.1.38</version.mysql>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>projectodd-snapshots</id>
+      <name>Project:odd Snapshots from CI</name>
+      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Repository Group</name>
+      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>projectodd-snapshots</id>
+      <name>Project:odd Snapshots from CI</name>
+      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring</id>
+      <name>Spring releases</name>
+      <url>http://repo.spring.io/libs-release-remote/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
   <build>
     <resources>
@@ -35,6 +94,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
+        <version>${version.maven-war-plugin}</version>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
@@ -42,7 +102,7 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>${version.swarm}</version>
+        <version>${version.wildfly-swarm}</version>
         <executions>
           <execution>
             <id>package</id>
@@ -56,9 +116,6 @@
             <goals>
               <goal>start</goal>
             </goals>
-            <configuration>
-              <useUberJar>true</useUberJar>
-            </configuration>
           </execution>
           <execution>
             <id>stop</id>
@@ -72,6 +129,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${version.build-helper-maven-plugin}</version>
         <executions>
           <execution>
             <id>add-source</id>
@@ -128,21 +186,21 @@
       <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>bom-all</artifactId>
-        <version>${version.swarm}</version>
+        <version>${version.wildfly-swarm}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.jboss.arquillian</groupId>
         <artifactId>arquillian-bom</artifactId>
-        <version>1.1.10.Final</version>
+        <version>${version.arquillian}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>org.jboss.arquillian.extension</groupId>
         <artifactId>arquillian-drone-bom</artifactId>
-        <version>2.0.0.Alpha4</version>
+        <version>${version.arquillian-drone}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -171,14 +229,14 @@
     <dependency>
       <groupId>org.jboss.spec.javax.ws.rs</groupId>
       <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
-      <version>1.0.0.Final</version>
+      <version>${version.jaxrs-api}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>${version.junit}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -189,7 +247,7 @@
     <dependency>
       <groupId>org.jboss.arquillian.graphene</groupId>
       <artifactId>graphene-webdriver</artifactId>
-      <version>2.1.0.Alpha2</version>
+      <version>${version.arquillian-graphene}</version>
       <type>pom</type>
       <scope>test</scope>
     </dependency>
