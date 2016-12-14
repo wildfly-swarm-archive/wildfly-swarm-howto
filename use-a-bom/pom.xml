@@ -9,16 +9,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.wildfly.swarm.howto</groupId>
-  <artifactId>howto-datasources</artifactId>
+  <artifactId>howto-use-a-bom</artifactId>
   <version>2017.1.0-SNAPSHOT</version>
 
-  <name>WildFly Swarm HOWTO: Create a Datasource</name>
-  <description>WildFly Swarm HOWTO: Create a Datasource</description>
+  <name>WildFly Swarm HOWTO: Use a BOM</name>
+  <description>WildFly Swarm HOWTO: Use a BOM</description>
 
   <packaging>war</packaging>
 
   <properties>
+    <!-- ### [wildfly-swarm-property] -->
     <version.wildfly-swarm>2017.1.0-SNAPSHOT</version.wildfly-swarm>
+    <!-- ### [wildfly-swarm-property] -->
     <version.maven-war-plugin>2.2</version.maven-war-plugin>
     <version.maven-failsafe-plugin>2.19.1</version.maven-failsafe-plugin>
     <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
@@ -26,8 +28,6 @@
     <version.arquillian-drone>2.0.0.Alpha4</version.arquillian-drone>
     <version.arquillian-graphene>2.1.0.Alpha2</version.arquillian-graphene>
     <version.junit>4.11</version.junit>
-
-    <version.jaxrs-api>1.0.0.Final</version.jaxrs-api>
 
     <version.h2>1.4.187</version.h2>
     <version.postgresql>9.4.1207</version.postgresql>
@@ -100,9 +100,11 @@
         </configuration>
       </plugin>
       <plugin>
+        <!-- ### [wildfly-swarm-plugin] -->
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <version>${version.wildfly-swarm}</version>
+        <!-- ### [wildfly-swarm-plugin] -->
         <executions>
           <execution>
             <id>package</id>
@@ -184,13 +186,27 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- ### [bom-dependency] -->
       <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>bom-all</artifactId>
+        <artifactId>bom</artifactId>
         <version>${version.wildfly-swarm}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!-- ### [bom-dependency] -->
+
+      <!-- ### [bom-unstable-dependency] -->
+      <!--
+      <dependency>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>bom-unstable</artifactId>
+        <version>${version.wildfly-swarm}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      -->
+      <!-- ### [bom-unstable-dependency] -->
       <dependency>
         <groupId>org.jboss.arquillian</groupId>
         <artifactId>arquillian-bom</artifactId>
@@ -209,30 +225,22 @@
   </dependencyManagement>
 
   <dependencies>
-    <!-- ### [dependencies] -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>${version.h2}</version>
     </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <version>${version.postgresql}</version>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>${version.mysql}</version>
-    </dependency>
-    <!--### [dependencies] -->
 
+    <!-- ### [fraction-dependencies] -->
     <dependency>
-      <groupId>org.jboss.spec.javax.ws.rs</groupId>
-      <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
-      <version>${version.jaxrs-api}</version>
-      <scope>provided</scope>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jaxrs</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>datasources</artifactId>
+    </dependency>
+    <!-- ### [fraction-dependencies] -->
 
     <dependency>
       <groupId>junit</groupId>

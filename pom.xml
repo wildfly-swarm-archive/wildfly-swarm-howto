@@ -28,6 +28,7 @@
   </properties>
 
   <modules>
+    <module>use-a-bom</module>
     <module>create-a-datasource</module>
   </modules>
 
