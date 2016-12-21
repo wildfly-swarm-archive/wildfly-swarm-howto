@@ -30,6 +30,7 @@
   <modules>
     <module>use-a-bom</module>
     <module>create-a-datasource</module>
+    <module>test-in-container</module>
   </modules>
 
 </project>

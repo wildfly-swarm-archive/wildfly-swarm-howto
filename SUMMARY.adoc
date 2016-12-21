@@ -2,3 +2,4 @@
 
 . link:use-a-bom/index.adoc[Use a BOM]
 . link:create-a-datasource/index.adoc[Create a Datasource]
+. link:test-in-container/index.adoc[Test in Container]
