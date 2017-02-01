@@ -46,7 +46,7 @@ scope) to your application:
 #### Explicit JDBC Driver Configuration
 
 In the event you need to provide customized driver configuration instead
-of relying on the auto-detection, you can use `project-stages.yml` to define
+of relying on the auto-detection, you can use `project-defaults.yml` to define
 the driver information.  This presumes you've followed the normal WildFly
 instructions for creating an appropriate `module.xml` to expose the 
 driver through _JBoss Modules_.  This is completely unnecessary if you
@@ -61,13 +61,13 @@ to a datasource.
 swarm:
   datasources:
     jdbc-drivers:
-[snippet](src/main/resources/project-stages.yml#driver)
+[snippet](src/main/resources/project-defaults.yml#driver)
 ----
 
 ### Datasources
 
 Once a driver has been configured, through either auto-detection or
-explicit configuration, you can use `project-stages.yml` to configure
+explicit configuration, you can use `project-defaults.yml` to configure
 one or more datasources using that driver, under `swarm` -> `datasources` -> `data-sources`:
 
 [source,yaml]
@@ -75,13 +75,13 @@ one or more datasources using that driver, under `swarm` -> `datasources` -> `da
 swarm:
   datasources:
     data-sources:
-[snippet](src/main/resources/project-stages.yml#datasource)
+[snippet](src/main/resources/project-defaults.yml#datasource)
 ----
 
-## Full `project-stages.yml`
+## Full `project-defaults.yml`
 
 [source,yaml]
 ----
-[snippet](src/main/resources/project-stages.yml)
+[snippet](src/main/resources/project-defaults.yml)
 ----
 
