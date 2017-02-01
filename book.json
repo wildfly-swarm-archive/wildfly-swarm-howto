@@ -3,6 +3,12 @@
   "plugins": [
     "snippet@git+https://github.com/wildfly-swarm/gitbook-plugin-snippet.git",
     "sourcelist@git+https://github.com/wildfly-swarm/gitbook-plugin-sourcelist.git"
-  ]
+  ],
+
+  "variables": {
+    "versions": {
+      "swarm": "2017.2.0"
+    }
+  }
 
 }
