@@ -10,7 +10,7 @@
 
   <groupId>org.wildfly.swarm.howto</groupId>
   <artifactId>howto-test-in-container</artifactId>
-  <version>2017.1.0-SNAPSHOT</version>
+  <version>2017.2.0-SNAPSHOT</version>
 
   <name>WildFly Swarm HOWTO: Test in Container</name>
   <description>WildFly Swarm HOWTO: Test in Container</description>
@@ -18,23 +18,21 @@
   <packaging>war</packaging>
 
   <properties>
-    <version.wildfly-swarm>2017.1.0-SNAPSHOT</version.wildfly-swarm>
+    <version.wildfly-swarm>2017.2.0-SNAPSHOT</version.wildfly-swarm>
     <version.maven-war-plugin>2.2</version.maven-war-plugin>
     <version.maven-failsafe-plugin>2.19.1</version.maven-failsafe-plugin>
     <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
-    <version.arquillian>1.1.10.Final</version.arquillian>
+    <version.arquillian>1.1.12.Final</version.arquillian>
     <version.junit>4.11</version.junit>
-
-    <version.jaxrs-api>1.0.0.Final</version.jaxrs-api>
 
     <version.h2>1.4.187</version.h2>
   </properties>
 
   <repositories>
     <repository>
-      <id>projectodd-snapshots</id>
-      <name>Project:odd Snapshots from CI</name>
-      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
       <releases>
         <enabled>false</enabled>
       </releases>
@@ -56,25 +54,14 @@
   </repositories>
   <pluginRepositories>
     <pluginRepository>
-      <id>projectodd-snapshots</id>
-      <name>Project:odd Snapshots from CI</name>
-      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
       <releases>
         <enabled>false</enabled>
       </releases>
       <snapshots>
         <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>spring</id>
-      <name>Spring releases</name>
-      <url>http://repo.spring.io/libs-release-remote/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
@@ -121,7 +108,7 @@
         <scope>import</scope>
       </dependency>
       <!-- ### [bom] -->
-<!--
+
       <dependency>
         <groupId>org.jboss.arquillian</groupId>
         <artifactId>arquillian-bom</artifactId>
@@ -129,14 +116,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.jboss.arquillian.extension</groupId>
-        <artifactId>arquillian-drone-bom</artifactId>
-        <version>${version.arquillian-drone}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
--->
     </dependencies>
   </dependencyManagement>
 
@@ -150,6 +129,12 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>datasources</artifactId>
+    </dependency>
+
+    <!-- Only required for use of @ArquillianResource in test -->
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>cdi</artifactId>
     </dependency>
 
     <!-- ### [arquillian] -->
@@ -166,20 +151,13 @@
       <version>${version.junit}</version>
       <scope>test</scope>
     </dependency>
-<!--
+
     <dependency>
       <groupId>org.jboss.arquillian.junit</groupId>
       <artifactId>arquillian-junit-container</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.jboss.arquillian.graphene</groupId>
-      <artifactId>graphene-webdriver</artifactId>
-      <version>${version.arquillian-graphene}</version>
-      <type>pom</type>
-      <scope>test</scope>
-    </dependency>
--->
+
   </dependencies>
 
 </project>

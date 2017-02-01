@@ -36,12 +36,12 @@ a `<scope>` of `test`:
 ### Write your Application
 
 You construct your application like normal, including using
-any default `project-stages.yml` you need to configure bits of
+any default `project-defaults.yml` you need to configure bits of
 it.
 
 [source,yml]
 ----
-[snippet](src/main/resources/project-stages.yml)
+[snippet](src/main/resources/project-defaults.yml)
 ----
 
 ### Create a test
@@ -99,7 +99,7 @@ into an instance member of our test-case:
 ----
 
 Then our test method itself can use that `InitialContext` in order to ensure
-the datasource we configured using `project-stages.yml` is actually live and 
+the datasource we configured using `project-defaults.yml` is actually live and
 available:
 
 [source,java]
