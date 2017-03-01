@@ -10,7 +10,7 @@
 
   <groupId>org.wildfly.swarm.howto</groupId>
   <artifactId>howto-test-in-container</artifactId>
-  <version>2017.3.0-SNAPSHOT</version>
+  <version>2017.3.2</version>
 
   <name>WildFly Swarm HOWTO: Test in Container</name>
   <description>WildFly Swarm HOWTO: Test in Container</description>
@@ -19,11 +19,11 @@
 
   <properties>
     <version.wildfly-swarm>2017.3.0-SNAPSHOT</version.wildfly-swarm>
-    <version.maven-war-plugin>2.2</version.maven-war-plugin>
+    <version.maven-war-plugin>3.0.0</version.maven-war-plugin>
     <version.maven-failsafe-plugin>2.19.1</version.maven-failsafe-plugin>
-    <version.build-helper-maven-plugin>1.9.1</version.build-helper-maven-plugin>
+    <version.build-helper-maven-plugin>3.0.0</version.build-helper-maven-plugin>
     <version.arquillian>1.1.12.Final</version.arquillian>
-    <version.junit>4.11</version.junit>
+    <version.junit>4.12</version.junit>
 
     <version.h2>1.4.187</version.h2>
   </properties>
