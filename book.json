@@ -7,7 +7,7 @@
 
   "variables": {
     "versions": {
-      "swarm": "2017.3.2"
+      "swarm": "2017.4.0-SNAPSHOT"
     }
   }
 
