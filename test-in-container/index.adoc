@@ -54,7 +54,9 @@ In a world of microservices, this tends to not be the case, and the entire
 "application" represents one small microservice component.
 
 The `@DefaultDeployment` annotation has been provided to automatically
-create the deployment of the entire application.
+create the deployment of the entire application. The `@DefaultDeployment`
+annotation defaults to creating a `.war`, which is not applicable in 
+this case, since Undertow is not involved.
 
 It it applied at the class level of your typical JUnit test, along
 with the usual `@RunWith(Arquillian.class)` annotation:
