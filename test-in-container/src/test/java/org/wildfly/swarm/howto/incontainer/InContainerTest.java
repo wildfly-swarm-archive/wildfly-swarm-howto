@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
  */
 // ### [prolog]
 @RunWith(Arquillian.class)
-@DefaultDeployment
+@DefaultDeployment(type = DefaultDeployment.Type.JAR)
 public class InContainerTest {
 // ### [prolog]
 
